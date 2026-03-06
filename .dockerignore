@@ -1,0 +1,54 @@
+# Dependencies (installed during image build)
+node_modules
+vendor
+
+# Built assets (rebuilt inside Docker)
+public/build
+public/hot
+
+# Environment & secrets
+.env
+.env.*
+!.env.example
+
+# Storage (mounted as volumes)
+storage/pail
+storage/logs/*.log
+
+# Git & editor
+.git
+.gitignore
+.gitattributes
+.github
+.editorconfig
+.prettierrc
+.prettierignore
+.phpactor.json
+.npmrc
+
+# IDE & OS
+.idea
+.vscode
+.fleet
+.nova
+.zed
+.DS_Store
+Thumbs.db
+
+# Docker files themselves
+docker-compose*.yml
+Dockerfile
+.dockerignore
+DOCKER.md
+
+# Tests & CI
+tests
+phpunit.xml
+.phpunit.cache
+.phpunit.result.cache
+
+# Build artifacts
+bootstrap/ssr
+
+# SQLite dev database (MySQL is used in Docker)
+database/database.sqlite
