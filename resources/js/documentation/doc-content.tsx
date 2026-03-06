@@ -43,26 +43,28 @@ function highlight(code: string, lang: string): string {
 
     if (['text'].includes(lang)) return esc;
 
+    // Span tags use single-quote style attributes so the double-quote string
+    // regex below cannot accidentally match and corrupt them.
     if (['bash', 'powershell', 'shell'].includes(lang)) {
         return esc
-            .replace(/(#.*)$/gm, '<span style="color:#475569">$1</span>')
-            .replace(/\b(php|composer|npm|npx|git|docker|mysql|node|cp|copy|open)\b/g, '<span style="color:#f59e0b">$1</span>')
-            .replace(/"([^"]*)"|'([^']*)'/g, '<span style="color:#34d399">"$1$2"</span>');
+            .replace(/(#.*)$/gm, "<span style='color:#475569'>$1</span>")
+            .replace(/\b(php|composer|npm|npx|git|docker|mysql|node|cp|copy|open)\b/g, "<span style='color:#f59e0b'>$1</span>")
+            .replace(/"([^"]*)"/g, "<span style='color:#34d399'>\"$1\"</span>");
     }
 
     if (['sql', 'ini'].includes(lang)) {
         return esc
-            .replace(/(#.*)|(--.*)/gm, '<span style="color:#475569">$1$2</span>')
-            .replace(/\b(CREATE|DATABASE|USE|GRANT|FLUSH|EXIT|SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|TABLE|CHARACTER|COLLATE|WITH|ALL|PRIVILEGES|IDENTIFIED|ON|TO|BY)\b/g, '<span style="color:#60a5fa">$1</span>')
-            .replace(/"([^"]*)"|'([^']*)'/g, '<span style="color:#34d399">"$1$2"</span>');
+            .replace(/(#.*)|(--.*)/gm, "<span style='color:#475569'>$1$2</span>")
+            .replace(/\b(CREATE|DATABASE|USE|GRANT|FLUSH|EXIT|SELECT|INSERT|UPDATE|DELETE|FROM|WHERE|TABLE|CHARACTER|COLLATE|WITH|ALL|PRIVILEGES|IDENTIFIED|ON|TO|BY)\b/g, "<span style='color:#60a5fa'>$1</span>")
+            .replace(/"([^"]*)"/g, "<span style='color:#34d399'>\"$1\"</span>");
     }
 
     return esc
-        .replace(/(\/\/.*$|#.*$|\/\*[\s\S]*?\*\/)/gm, '<span style="color:#475569">$1</span>')
-        .replace(/\b(import|export|from|const|let|var|function|return|default|interface|type|class|extends|implements|new|async|await|if|else|for|while|use|namespace|public|protected|private|static|require|echo|include)\b/g, '<span style="color:#818cf8">$1</span>')
-        .replace(/\b(string|number|boolean|void|any|never|unknown|Record|Array|Promise|React|Response|Inertia)\b/g, '<span style="color:#60a5fa">$1</span>')
-        .replace(/"([^"]*)"|'([^']*)'/g, '<span style="color:#34d399">"$1$2"</span>')
-        .replace(/\b(true|false|null|undefined)\b/g, '<span style="color:#f59e0b">$1</span>');
+        .replace(/(\/\/.*$|#.*$|\/\*[\s\S]*?\*\/)/gm, "<span style='color:#475569'>$1</span>")
+        .replace(/\b(import|export|from|const|let|var|function|return|default|interface|type|class|extends|implements|new|async|await|if|else|for|while|use|namespace|public|protected|private|static|require|echo|include)\b/g, "<span style='color:#818cf8'>$1</span>")
+        .replace(/\b(string|number|boolean|void|any|never|unknown|Record|Array|Promise|React|Response|Inertia)\b/g, "<span style='color:#60a5fa'>$1</span>")
+        .replace(/"([^"]*)"/g, "<span style='color:#34d399'>\"$1\"</span>")
+        .replace(/\b(true|false|null|undefined)\b/g, "<span style='color:#f59e0b'>$1</span>");
 }
 
 // ── Block renderers ──────────────────────────────────────────────────

@@ -68,10 +68,9 @@ export default function Welcome({
                                     <span>
                                         Read the
                                         <a
-                                            href="https://laravel.com/docs"
+                                            href='/documentation'
                                             target="_blank"
-                                            className="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]"
-                                        >
+                                            className="ml-1 inline-flex items-center space-x-1 font-medium text-[#f53003] underline underline-offset-4 dark:text-[#FF4433]">
                                             <span>Documentation</span>
                                             <svg
                                                 width={10}
@@ -79,8 +78,7 @@ export default function Welcome({
                                                 viewBox="0 0 10 11"
                                                 fill="none"
                                                 xmlns="http://www.w3.org/2000/svg"
-                                                className="h-2.5 w-2.5"
-                                            >
+                                                className="h-2.5 w-2.5">
                                                 <path
                                                     d="M7.70833 6.95834V2.79167H3.54167M2.5 8L7.5 3.00001"
                                                     stroke="currentColor"
